@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FELIPE PANTONE - Chaussure Personnalisée</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica', sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      background-color: white;
+      color: black;
+    }
+
+    section {
+      width: 100vw;
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+    }
+
+    .page1 .content {
+      color: black;
+      padding: 4rem 2rem;
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+    }
+
+    .page1 h1 {
+      font-size: 8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 1px;
+      border-color: #ffff;
+      color: black;
+      margin-bottom: 3rem;
+      animation: fadeInDown 1.5s ease-out forwards;
+    }
+
+    .h1-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2rem;
+  z-index: 1;
+}
+
+.h1-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('img/FLASH.png'); /* 🔁 change ici plus tard */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  z-index: -1;
+  border-radius: 12px;
+
+
+}
+
+.titre-felipe {
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: black;
+  text-align: center;
+  opacity: 1;
+}
+
+
+
+    .page1 p {
+      font-size: 2rem;
+      line-height: 1.3;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeInUp 2s ease-out forwards;
+    }
+
+    .page2 {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.image-box {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Lien dans l’image */
+.image-box a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Les deux images superposées */
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.6s ease;
+}
+
+.img-front {
+  z-index: 2;
+  opacity: 1;
+}
+
+.img-back {
+  z-index: 1;
+  opacity: 0;
+}
+
+.image-box:hover .img-back {
+  opacity: 1;
+}
+
+.image-box:hover .img-front {
+  opacity: 0;
+}
+
+/* Curseur clic visuel */
+.image-box a {
+  cursor: pointer;
+}
+
+
+
+
+    .header {
+      background-color: rgb(0, 0, 0);
+      height: 10vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .header .logo {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin-left: 30px;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="cc.html" class="logo">
+      <img src="img/SPRECTRON.png" alt="Logo">
+    </a>
+  </div>
+
+  <!-- Page 1 -->
+  <section class="page1">
+    <div class="content">
+
+        <div class="h1-wrapper">
+            <h1 class="titre-felipe">FELIPE PANTONE</h1>
+          </div>
+          
+          
+      <p>
+        Felipe Pantone est un artiste contemporain renommé pour son style dynamique mêlant art cinétique, graffiti et esthétiques numériques.
+        Son travail se distingue par des couleurs vibrantes, des motifs géométriques et une forte influence du glitch art et de l'optique.
+        Sa vision unique transforme chaque objet en une expérience visuelle intense, capturant le mouvement et la lumière d'une manière moderne et audacieuse.
+      </p>
+    </div>
+  </section>
+
+  <!-- Page 2 -->
+  <section class="page2">
+    <div class="image-box">
+        <a href="bloc.html?modèle=1">
+        <img class="img-front" src="img/T333.png" alt="Image visible">
+        <img class="img-back" src="img/F1.png" alt="Image au survol">
+      </a>
+    </div>
+  
+    <div class="image-box">
+        <a href="bloc.html?modèle=2">
+          <img class="img-front" src="img/T222.png" alt="Image visible">
+          <img class="img-back" src="img/F2.png" alt="Image au survol">
+        </a>
+      </div>
+      
+  
+    <div class="image-box">
+        <a href="bloc.html?modèle=3">
+        <img class="img-front" src="img/T111.png" alt="Image visible">
+        <img class="img-back" src="img/F3.png" alt="Image au survol">
+      </a>
+    </div>
+  </section>
+  
+  
+</body>
+</html>

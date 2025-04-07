@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personnalisation de Chaussures</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.js"></script>
+    <script src="https://unpkg.com/lottie-web@5.7.4/build/player/lottie.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.container-fluid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+
+        .header {
+            background-color: rgb(0, 0, 0);
+            height: 10vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-left: 30px; /* ajuste comme tu veux */
+            }
+
+
+        .content {
+            flex: 1;
+            display: flex;
+            width: 100%;
+        }
+
+        .image-section {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:#E9E9E9;
+            position: relative;
+        }
+.shoe-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+
+#background-image,
+#produit-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+#produit-svg path {
+  fill: url(#zebra-fill);
+  transition: fill 0.3s ease;
+  cursor: pointer;
+}
+
+#produit-svg path:hover,
+#produit-svg path.selected {
+  fill: rgb(255, 121, 121);
+}
+
+
+                #b {
+        opacity: 0.5;
+        }
+
+        #c {
+        opacity: 0.5;
+        }
+        
+        .sidebar {
+            flex: 1;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .modern-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+}
+
+       
+
+/* Espacement et style pour la section des couleurs */
+.colors {
+    display: flex;
+    gap: 15px; /* Augmenter l'espace entre les couleurs */
+    flex-wrap: wrap;
+    margin-bottom: 30px; /* Espacement en bas */
+}
+
+.color {
+    width: 50px; /* Taille légèrement augmentée */
+    height: 50px;
+    border-radius: 50%; /* Conserver la forme ronde */
+    cursor: pointer;
+    border: 2px solid #ddd; /* Bordure légère */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Ajout d'une transition pour l'ombre */
+}
+
+.color:hover {
+    transform: scale(1.1); /* Légère augmentation de la taille au survol */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ombre portée au survol */
+}
+
+/* Style pour la palette */
+.palette {
+    background-color: #ffffff; /* Fond blanc pour un look moderne */
+    flex: 1;
+    margin-bottom: 20px;
+    padding: 20px; /* Espacement intérieur augmenté */
+    border-radius: 12px; /* Coins plus arrondis */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre plus douce */
+}
+
+.palette h3 {
+    font-size: 20px;
+    color: #333; /* Texte plus sombre pour un contraste moderne */
+    margin-bottom: 15px; /* Espacement en bas */
+    font-weight: bold;
+}
+.color-picker-container {
+    margin-bottom: 20px;
+}
+
+.color-picker-container label {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.color-picker {
+    display: inline-block;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s ease;
+}
+
+.color-picker:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.jscolor {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    outline: none;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.jscolor:hover {
+    background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+    transform: scale(1.05);
+}
+
+.jscolor:focus {
+    box-shadow: 0 0 0 3px rgba(110, 142, 251, 0.3);
+}
+/* Style pour les modèles */
+.models {
+    display: flex;
+    gap: 20px; /* Espacement entre les modèles augmenté */
+    flex-wrap: wrap;
+    justify-content: space-around; /* Répartition équilibrée */
+}
+
+.model {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espacement entre l'image et le bouton */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition fluide */
+}
+
+.model:hover {
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+}
+
+.model img {
+    width: 230px; /* Taille réduite des images */
+    height: auto;
+    border-radius: 12px; /* Coins plus arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre portée */
+}
+
+.model button {
+    background-color: #333; /* Couleur de fond du bouton */
+    color: white; /* Texte en blanc */
+    border: none;
+    padding: 10px 20px; /* Espacement intérieur augmenté */
+    border-radius: 8px; /* Coins plus arrondis */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition fluide */
+}
+
+.model button:hover {
+    background-color: #555; /* Couleur de fond au survol */
+}
+
+/* Style pour le bouton principal */
+.button {
+    background: linear-gradient(135deg, #6e8efb, #4a6cf7); /* Dégradé moderne */
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transition fluide */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre portée */
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #4a6cf7, #6e8efb); /* Inversion du dégradé */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+    transform: translateY(-2px); /* Légère élévation */
+}
+
+.button:active {
+    transform: translateY(0); /* Retour à la position initiale */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre réduite */
+}
+.modern-button {
+    background: linear-gradient(135deg, #6e8efb, #4a6cf7); /* Dégradé de couleur */
+    color: white; /* Texte en blanc */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Texte en gras */
+    padding: 12px 24px; /* Espacement intérieur */
+    border: none; /* Pas de bordure */
+    border-radius: 8px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre portée */
+    transition: all 0.3s ease; /* Transition fluide */
+}
+
+.modern-button:hover {
+    background: linear-gradient(135deg, #4a6cf7, #6e8efb); /* Inversion du dégradé */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+    transform: translateY(-2px); /* Légère élévation */
+}
+
+.modern-button:active {
+    transform: translateY(0); /* Retour à la position initiale */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre réduite */
+}
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <div class="header">
+            <a href="cc.html" class="logo">
+              <img src="img/SPRECTRON.png" alt="Logo">
+            </a>
+          </div>
+          
+
+        <!-- Contenu principal -->
+        <div class="content">
+            <!-- Section de la chaussure -->
+            <div class="image-section">
+                <div class="shoe-container">
+                    <img id="background-image" src="img/SNKRS_SAE.png" alt="Sneakers">
+                    <svg id="produit-svg" viewBox="0 0 3840 2160" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <pattern id="zebra-fill" patternUnits="userSpaceOnUse" width="10" height="10">
+                              <rect width="10" height="10" fill="white"/>
+                              <path d="M -5,5 l 10,-10
+                                       M 0,10 l 10,-10
+                                       M 5,15 l 10,-10" 
+                                    stroke="rgba(227, 21, 21, 0.8)" 
+                                    stroke-width="4"/>
+                            </pattern>
+                          </defs>
+                          
+                        <!-- Contenu du SVG -->
+                        <g id="Calque_1">
+                            <path id="h" d="M1255.59,665.54c11.94,29.29,33.4,54.05,61.84,68.09,4.83,2.38,9.59,4.32,14.08,5.53,82,22.21,344.27-173.78,344.27-173.78,0,0-22.65-80.87,51.53-126.37,74.18-45.5,78.9-5.54,78.9-5.54,0,0,16.23,35.23-75.53,131.62,0,0,97.68-62.95,153.02-51.75,0,0,0,.53,0,15.76,0,21.8-5.8,21.21-5.8,21.21,0,0-77.57,20.39-134.2,62.29-61.75,45.7-183.88,123.67-183.88,123.67,0,0-118.81,84.67-206.85,81.57-88.05-3.1-159.56-78.95-191.66-194.81-37.89-136.78-188.23-63.33-188.23-63.33,0,0-16.36,4.39-1.76-18.17,0,0,18.98-18.92,91.52-24.65,0,0,121.09-27.13,192.76,148.64Z M1959.85,536.39s.19,12.73-3.37,21.91c26.74,16.93,47.29,43.72,47.29,43.72,0,0,52.03,72.46,57.73,77.21,5.69,4.75,21.6,22.07,29.11,13.6,13.92-15.7,2.35-25.33,2.35-25.33,0,0-42.61-37.06-69.41-76.28-22.08-32.3-44.26-46.62-63.68-54.83Z" />
+                            <path id="b" d="M1040.02,1501.96c-1.88-5.88-2.37-15.81-1.92-21.96.91-12.47,2.35-28.61,36.26-38.47,47.22-13.73,180.77-62.8,237.51-63.05,1.49,0,2.95-.1,4.42-.28,7.7-.93,39.52-2.38,107.92,23.2,60.73,22.72,143.97,56.37,162.48,63.88,3.06,1.24,5.93,2.84,8.52,4.89,6.6,5.22,17.73,16.3,17.86,31.71.18,20.93-9.7,41.35-43.92,46.44,0,0-311.87-3.8-364.91-7.08-78.26-4.84-150.13,4.74-164.23-39.3Z," />
+                        </g>
+                        <g id="Calque_2">
+                            <path id="s" d="M739.01,1464.46s-5.17,30.46,6.25,47.61c7.04,7.91,8.96,16.32,8.96,16.32v3.26l26,29.91h6.25s9.04,20.71,37.96,33.43h5.63l8,7.78,31.29,16.9s15.83-.08,17.42,6.23,32.59,9.66,32.59,9.66h19.71l4,3.56h35.79s-13.13,24.27,91.38,24.48c46.5,0,63.21-6.36,63.21-6.36,0,0-3.25,12.09,28.88,13.05,32.13.96,69.59,3.6,85.09-6.78,0,0-4.54,13.35,36.67,13.56,41.21.21,61.46,0,61.46,0l35.5-14.35s-1.58,16.11,17.46,16.32,62.09,0,62.09,0c0,0,24.38-6.57,24.38-25.48h5.17s-3.17,25.27,13.5,25.56c16.67.29,112.26,0,112.26,0,0,0,23.79,1.09,24.58-25.98l8.13-.21s-2.58,28.66,15.25,28.66h106.09s18.04.21,17.67-28.49h7.75s-4.17,29.87,16.46,30.25c20.63.38,79.17,3.1,88-16.78,0,0-5.17,19.08,38.17,19.08h92.67s22.63-.96,23.42-25.23c0,0,10.75-4.06,13.42-8.07l7.29.21v8.87h25.54s-5.58,27.15,31.46,27.15h131.63s30.88.38,29.75-31.96c0,0,30.34-3.85,30.34-31.21,0,0,10.38-5.19,12.88,16.36,2.5,21.55,62.38,16.36,62.38,16.36,0,0-5.75,26.61,40.5,25.06,46.25-1.55,138.55-9.04,138.55-9.04,0,0,15.54-3.26,11.5-26.61,0,0,47.42,2.68,58.13-6.15,0,0-.96,35.06,61.79,16.19,62.75-18.87,84.42-17.91,78.88-49.33,0,0,28.42-8.49,23.58-30.63,0,0,22.63,14.27,44.92,7.32,0,0,4.04,26.99,44.13,7.11s92.3-50.67,92.3-50.67c0,0,13.04-11,.96-24.48l29.92-16.94-1.17-11,10.54-7.32,6.13,5.19,14.75-12.8,13.38,12.43,21.54-24.89-4.21-11.97,10.79,3.18,18.58-24.6-4.29-5.23,7.13-2.51,20.54-46.06-3.79-5.4,8.5-.08,21.46-43.3-6.63-3.47v-4.94l6.54-1.42v-51.92l-9.42-6.36,9.42-6.15s7.13-81.67-39.92-85.01c0,0,44.92,81.5.04,136.14,0,0,47.75-2.89,21.33,37.7-26.42,40.58-77.59,140.91-298.68,222.41,0,0-17.13-26.94-39.25-17.53-22.13,9.41-19.46,36.4-19.46,36.4,0,0-108.71,49.2-428.11,52.55,0,0-7.38-37.07-42.29-33.68-34.92,3.39-32.21,33.01-32.21,33.01,0,0-1049.14-4.27-1291.94-29.83-231.22-36.4-254.26-139.19-254.26-139.19l.04.17Z"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Texte -->
+                <div class="text modern-text">PERSONNALISEZ VOTRE PAIRE</div>
+
+                <!-- Palette de couleurs -->
+                <div class="palette">
+                    <h3 class="section-title">Couleurs</h3>
+                    <div class="color-picker-container">
+                        <div class="color-picker">
+                            <input class="jscolor {onFineChange:'changeColor(this)'}" value="ff7f00" id="color-picker">
+                        </div>
+                    </div>
+                    <div class="colors">
+                        <div class="color" style="background-color: #ff7f00" data-hex="#ff7f00" data-target="h"></div>
+                        <div class="color" style="background-color: #8cd147" data-hex="#8cd147" data-target="b"></div>
+                        <div class="color" style="background-color: #4a9ccf" data-hex="#4a9ccf" data-target="s"></div>
+                        <div class="color" style="background-color: #661f45" data-hex="#661f45" data-target="h"></div>
+                        <div class="color" style="background-color: #1e2024" data-hex="#1e2024" data-target="s"></div>
+                    </div>
+                
+                    <h3 class="section-title">Modèles</h3>
+                    <div class="models">
+                        <div class="model">
+                          <img src="img/SNKRS_SAEE.png" alt="Modèle 1">
+                        </div>
+                        <div class="model">
+                          <img src="img/SNKRS_SAEE2.png" alt="Modèle 2">
+                        </div>
+                        <div class="model">
+                          <img src="img/SNKRS_SAEE3.png" alt="Modèle 3">
+                        </div>
+                      </div>
+                      
+                </div>
+
+                <!-- Bouton Ajouter au panier -->
+                <button class="modern-button">Ajouter au panier</button>
+                <div id="lottie-success" style="width: 100px; height: 100px; display: none; margin: 20px auto;"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedPart = null;
+        let isModified = false;
+      
+        // 🖱️ Sélection d’un path
+        document.querySelectorAll("#produit-svg path").forEach(path => {
+          path.addEventListener("click", function (e) {
+            e.stopPropagation();
+            document.querySelectorAll("#produit-svg path").forEach(p => p.classList.remove("selected"));
+            this.classList.add("selected");
+            selectedPart = this;
+          });
+        });
+      
+        // ❌ Clic ailleurs = désélection
+        document.addEventListener("click", function (e) {
+          const isTool = e.target.closest(".color, .jscolor, .color-picker");
+          if (!isTool) {
+            document.querySelectorAll("#produit-svg path").forEach(p => p.classList.remove("selected"));
+            selectedPart = null;
+          }
+        });
+      
+        // 🎨 Clic pastilles couleurs
+        document.querySelectorAll(".color").forEach(color => {
+          color.addEventListener("click", function () {
+            if (selectedPart) {
+              const newColor = this.getAttribute("data-hex");
+              selectedPart.style.fill = newColor;
+              isModified = true;
+            } else {
+              alert("Veuillez sélectionner une partie zébrée de la chaussure avant de choisir une couleur");
+            }
+          });
+        });
+      
+        // 🎨 Changement via jscolor picker
+        function changeColor(picker) {
+          if (!selectedPart) return;
+      
+          const hexColor = picker.toHEXString();
+          selectedPart.style.fill = hexColor;
+          isModified = true;
+          addCustomColorToPalette(hexColor);
+        }
+      
+        // ➕ Ajouter une couleur perso en 6e position
+        function addCustomColorToPalette(hexColor) {
+          const colorsContainer = document.querySelector('.colors');
+          const existingCustom = colorsContainer.querySelector('.custom-color');
+      
+          if (existingCustom) {
+            existingCustom.style.backgroundColor = hexColor;
+            existingCustom.setAttribute('data-hex', hexColor);
+          } else {
+            const newColor = document.createElement('div');
+            newColor.classList.add('color', 'custom-color');
+            newColor.style.backgroundColor = hexColor;
+            newColor.setAttribute('data-hex', hexColor);
+            newColor.setAttribute('data-target', 'h');
+      
+            newColor.addEventListener('click', function () {
+              const selectedHex = this.getAttribute('data-hex');
+              if (selectedPart) {
+                selectedPart.style.fill = selectedHex;
+                isModified = true;
+              } else {
+                alert("Sélectionnez une partie de la chaussure avant de choisir une couleur !");
+              }
+            });
+      
+            const allColors = colorsContainer.querySelectorAll('.color');
+            if (allColors.length >= 5) {
+              colorsContainer.insertBefore(newColor, allColors[5]);
+            } else {
+              colorsContainer.appendChild(newColor);
+            }
+          }
+        }
+      
+        // 📥 Chargement du modèle via URL ?modele=
+        document.addEventListener("DOMContentLoaded", () => {
+          const urlParams = new URLSearchParams(window.location.search);
+          const modele = urlParams.get("modèle");
+      
+          const modeleImages = {
+            "1": "img/SNKRS_SAEE.png",
+            "2": "img/SNKRS_SAEE2.png",
+            "3": "img/SNKRS_SAEE3.png"
+          };
+      
+          if (modele && modeleImages[modele]) {
+            document.getElementById("background-image").src = modeleImages[modele];
+          }
+        });
+      
+        // 🖼️ Clic sur miniatures pour changer manuellement de modèle
+        document.querySelectorAll('.model img').forEach(img => {
+          img.addEventListener('click', function () {
+            const imagePath = this.getAttribute('src');
+            document.getElementById('background-image').src = imagePath;
+          });
+        });
+      
+// Chargement de l'animation
+const lottieContainer = document.getElementById('lottie-success');
+const animation = lottie.loadAnimation({
+  container: lottieContainer,
+  renderer: 'svg',
+  loop: false,
+  autoplay: false,
+  path: 'https://assets1.lottiefiles.com/packages/lf20_jbrw3hcz.json' // ← lien Lottie (tu peux le changer)
+});
+
+// Clic sur le bouton
+document.querySelector('.modern-button').addEventListener('click', () => {
+  // Affiche l'animation
+  lottieContainer.style.display = 'block';
+  animation.goToAndPlay(0, true);
+
+  // Cache après la lecture
+  setTimeout(() => {
+    lottieContainer.style.display = 'none';
+  }, 2000);
+});
+
+      </script>
+      
+      
